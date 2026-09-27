@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aldea Group | www.aldeacorp.com</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        aldea: {
+                            dark: '#0B132B',
+                            navy: '#1C2541',
+                            slate: '#3A506B',
+                            gold: '#D4AF37',
+                            amber: '#F39C12',
+                            light: '#F8FAFC',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gold-gradient {
+            background: linear-gradient(135deg, #F39C12 0%, #D4AF37 100%);
+        }
+        .hero-bg {
+            background: linear-gradient(rgba(11, 19, 43, 0.88), rgba(28, 37, 65, 0.92)), url('https://images.unsplash.com/photo-1541888946425-d0fbb18f86f7?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        .oil-bg {
+            background: linear-gradient(rgba(11, 19, 43, 0.92), rgba(11, 19, 43, 0.96)), url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased font-sans selection:bg-amber-500 selection:text-white">
+
+    <header class="fixed top-0 left-0 right-0 z-50 bg-aldea-dark/95 backdrop-blur-md border-b border-slate-800 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#home" class="flex items-center space-x-3 group">
+                <div class="w-11 h-11 rounded-full bg-amber-400 flex items-center justify-center shadow-lg relative overflow-hidden border-2 border-amber-300">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-amber-600 to-amber-300 opacity-90"></div>
+                    <svg class="w-9 h-9 text-aldea-dark relative z-10" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="8">
+                        <circle cx="50" cy="50" r="40" />
+                        <circle cx="50" cy="50" r="28" />
+                        <circle cx="50" cy="50" r="16" />
+                    </svg>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-lg font-extrabold tracking-wider text-white">ALDEA</span>
+                    <span class="text-[9px] tracking-widest text-amber-400 font-semibold uppercase">GROUP LLC & S.I.C.A.</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden lg:flex items-center space-x-7 text-sm font-medium text-slate-300">
+                <a href="#home" class="hover:text-amber-400 transition-colors" data-en="Home" data-es="Inicio">Inicio</a>
+                <a href="#about" class="hover:text-amber-400 transition-colors" data-en="About Us" data-es="Nosotros">Nosotros</a>
+                <a href="#construction" class="hover:text-amber-400 transition-colors" data-en="Construction" data-es="Construcción">Construcción</a>
+                <a href="#oilgas" class="hover:text-amber-400 transition-colors" data-en="Oil & Gas" data-es="Petróleo y Gas">Petróleo y Gas</a>
+                <a href="#offices" class="hover:text-amber-400 transition-colors" data-en="Global Offices" data-es="Oficinas Globales">Oficinas Globales</a>
+                <a href="#contact" class="hover:text-amber-400 transition-colors" data-en="Contact" data-es="Contacto">Contacto</a>
+            </nav>
+
+            <!-- Language Toggle & CTA -->
+            <div class="hidden sm:flex items-center space-x-4">
+                <button onclick="toggleLanguage()" class="bg-slate-800 border border-slate-700 text-amber-400 hover:bg-slate-700 px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center space-x-1.5 shadow-sm">
+                    <i class="fa-solid fa-globe"></i>
+                    <span id="lang-label">ES / EN</span>
+                </button>
+                <a href="mailto:negocios@aldeacorp.com" class="gold-gradient hover:opacity-90 text-aldea-dark font-bold px-4 py-2 rounded-xl shadow-md text-xs transition">
+                    <span data-en="negocios@aldeacorp.com" data-es="negocios@aldeacorp.com">negocios@aldeacorp.com</span>
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="menu-btn" class="lg:hidden text-white focus:outline-none text-2xl p-2">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Drawer -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-aldea-dark border-b border-slate-800 px-6 py-6 space-y-4">
+            <a href="#home" class="block text-slate-300 hover:text-amber-400 font-medium" data-en="Home" data-es="Inicio">Inicio</a>
+            <a href="#about" class="block text-slate-300 hover:text-amber-400 font-medium" data-en="About Us" data-es="Nosotros">Nosotros</a>
+            <a href="#construction" class="block text-slate-300 hover:text-amber-400 font-medium" data-en="Construction & Civil" data-es="Construcción y Civil">Construcción y Civil</a>
+            <a href="#oilgas" class="block text-slate-300 hover:text-amber-400 font-medium" data-en="Oil & Gas Solutions" data-es="Soluciones Oil & Gas">Soluciones Oil & Gas</a>
+            <a href="#offices" class="block text-slate-300 hover:text-amber-400 font-medium" data-en="Global Offices" data-es="Oficinas Globales">Oficinas Globales</a>
+            <a href="#contact" class="block text-slate-300 hover:text-amber-400 font-medium" data-en="Contact" data-es="Contacto">Contacto</a>
+            <div class="pt-4 flex items-center justify-between border-t border-slate-800">
+                <button onclick="toggleLanguage()" class="bg-slate-800 text-amber-400 px-4 py-2 rounded-lg text-xs font-bold">
+                    Switch Language (EN/ES)
+                </button>
+                <a href="mailto:negocios@aldeacorp.com" class="gold-gradient text-aldea-dark font-bold px-4 py-2 rounded-lg text-xs">
+                    Email Us
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section id="home" class="relative pt-32 pb-24 lg:pt-48 lg:pb-36 hero-bg text-white overflow-hidden">
+        <div class="absolute inset-0 bg-black/40 z-0"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-3xl">
+                <div class="inline-flex items-center space-x-2 bg-amber-500/20 border border-amber-400/40 px-4 py-1.5 rounded-full text-amber-300 font-semibold text-xs sm:text-sm mb-6 backdrop-blur-sm">
+                    <i class="fa-solid fa-medal"></i>
+                    <span data-en="20+ Years of Engineering Excellence | www.aldeacorp.com" data-es="Más de 20 Años de Excelencia en Ingeniería | www.aldeacorp.com">Más de 20 Años de Excelencia en Ingeniería | www.aldeacorp.com</span>
+                </div>
+                <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight leading-tight mb-6">
+                    <span data-en="Engineering Excellence & Infrastructure Solutions" data-es="Excelencia en Ingeniería y Soluciones de Infraestructura">Excelencia en Ingeniería y Soluciones de Infraestructura</span>
+                </h1>
+                <p class="text-lg sm:text-xl text-slate-300 mb-8 leading-relaxed" data-en="A premier multi-disciplinary engineering organization delivering complex EPC projects, large-scale urban infrastructure, and critical Oil & Gas surface facilities across the United States, Colombia, Panama, and Venezuela." data-es="Una organización de ingeniería multidisciplinaria líder que ejecuta proyectos EPC complejos, infraestructura urbana a gran escala y facilidades de superficie para Oil & Gas en Estados Unidos, Colombia, Panamá y Venezuela.">
+                    Una organización de ingeniería multidisciplinaria líder que ejecuta proyectos EPC complejos, infraestructura urbana a gran escala y facilidades de superficie para Oil & Gas en Estados Unidos, Colombia, Panamá y Venezuela.
+                </p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#construction" class="gold-gradient text-aldea-dark font-bold px-8 py-4 rounded-xl shadow-lg text-center hover:opacity-90 transition transform hover:-translate-y-1">
+                        <span data-en="Explore Divisions" data-es="Explorar Divisiones">Explorar Divisiones</span> <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </a>
+                    <a href="#contact" class="bg-white/10 hover:bg-white/20 border border-white/30 text-white font-semibold px-8 py-4 rounded-xl backdrop-blur-md text-center transition">
+                        <span data-en="Contact Corporate" data-es="Contactar Corporativo">Contactar Corporativo</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 pt-12 border-t border-white/10">
+                <div class="bg-white/5 backdrop-blur-md p-6 rounded-2xl border border-white/10">
+                    <div class="text-3xl sm:text-4xl font-black text-amber-400 mb-1">20+</div>
+                    <div class="text-sm text-slate-300 font-medium" data-en="Years Track Record" data-es="Años de Trayectoria">Años de Trayectoria</div>
+                </div>
+                <div class="bg-white/5 backdrop-blur-md p-6 rounded-2xl border border-white/10">
+                    <div class="text-3xl sm:text-4xl font-black text-amber-400 mb-1">4</div>
+                    <div class="text-sm text-slate-300 font-medium" data-en="Countries Operating" data-es="Países de Operación">Países de Operación</div>
+                </div>
+                <div class="bg-white/5 backdrop-blur-md p-6 rounded-2xl border border-white/10">
+                    <div class="text-3xl sm:text-4xl font-black text-amber-400 mb-1">EPC</div>
+                    <div class="text-sm text-slate-300 font-medium" data-en="Full Lifecycle Solutions" data-es="Soluciones Integrales EPC">Soluciones Integrales EPC</div>
+                </div>
+                <div class="bg-white/5 backdrop-blur-md p-6 rounded-2xl border border-white/10">
+                    <div class="text-3xl sm:text-4xl font-black text-amber-400 mb-1">Zero</div>
+                    <div class="text-sm text-slate-300 font-medium" data-en="Flaring / ESG Focus" data-es="Quema Cero / Enfoque ESG">Quema Cero / Enfoque ESG</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs uppercase tracking-widest text-amber-600 font-bold mb-3" data-en="Who We Are" data-es="Quiénes Somos">Quiénes Somos</h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold text-aldea-dark" data-en="Engineering the Future of Infrastructure & Energy" data-es="Ingeniería para el Futuro de la Infraestructura y la Energía">Ingeniería para el Futuro de la Infraestructura y la Energía</h3>
+                <p class="text-slate-600 mt-4 text-lg" data-en="Aldea Group and its specialized energy division Aldea Servicios Integrales, C.A. combine technical precision, technological innovation, and uncompromising safety standards to deliver high-impact projects." data-es="Aldea Group y su división especializada de energía Aldea Servicios Integrales, C.A. combinan precisión técnica, innovación tecnológica y rigurosos estándares de seguridad para entregar proyectos de alto impacto.">
+                    Aldea Group y su división especializada de energía Aldea Servicios Integrales, C.A. combinan precisión técnica, innovación tecnológica y rigurosos estándares de seguridad para entregar proyectos de alto impacto.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+                <!-- Mission -->
+                <div class="bg-aldea-light p-8 rounded-3xl border border-slate-200 shadow-sm hover:shadow-md transition">
+                    <div class="w-14 h-14 rounded-2xl bg-amber-500/10 text-amber-600 flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-bullseye"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-aldea-dark mb-4" data-en="Our Mission" data-es="Nuestra Misión">Nuestra Misión</h4>
+                    <p class="text-slate-600 leading-relaxed text-sm" data-en="Develop and execute engineering, procurement and construction projects, providing the best service to obtain client satisfaction, offering tangible results in an environment of collaboration, ethics, and responsibility." data-es="Desarrollar y ejecutar proyectos de ingeniería, procura y construcción, brindando el mejor servicio para obtener la mayor satisfacción de nuestros clientes, ofreciendo resultados tangibles en un entorno de colaboración, ética y responsabilidad.">
+                        Desarrollar y ejecutar proyectos de ingeniería, procura y construcción, brindando el mejor servicio para obtener la mayor satisfacción de nuestros clientes, ofreciendo resultados tangibles en un entorno de colaboración, ética y responsabilidad.
+                    </p>
+                </div>
+
+                <!-- Vision -->
+                <div class="bg-aldea-light p-8 rounded-3xl border border-slate-200 shadow-sm hover:shadow-md transition">
+                    <div class="w-14 h-14 rounded-2xl bg-amber-500/10 text-amber-600 flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-eye"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-aldea-dark mb-4" data-en="Our Vision" data-es="Nuestra Visión">Nuestra Visión</h4>
+                    <p class="text-slate-600 leading-relaxed text-sm" data-en="To position ourselves as a leading provider of engineering and construction services for big works in general, maintaining a level of excellence and continuous improvement to exceed client expectations." data-es="Posicionarnos como un proveedor líder de servicios de ingeniería y construcción para grandes obras en general, manteniendo un nivel de excelencia y mejora continua para superar las expectativas de nuestros clientes.">
+                        Posicionarnos como un proveedor líder de servicios de ingeniería y construcción para grandes obras en general, manteniendo un nivel de excelencia y mejora continua para superar las expectativas de nuestros clientes.
+                    </p>
+                </div>
+
+                <!-- Strategic Alliances -->
+                <div class="bg-aldea-light p-8 rounded-3xl border border-slate-200 shadow-sm hover:shadow-md transition">
+                    <div class="w-14 h-14 rounded-2xl bg-amber-500/10 text-amber-600 flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-handshake"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-aldea-dark mb-4" data-en="Strategic Associations" data-es="Alianzas Estratégicas">Alianzas Estratégicas</h4>
+                    <p class="text-slate-600 leading-relaxed text-sm" data-en="We maintain agreements with specialized companies in engineering, project management, construction, maintenance and electricity, reducing risks, lowering costs, and developing competitive advantages." data-es="Mantenemos acuerdos con empresas especializadas en ingeniería, gestión de proyectos, construcción, mantenimiento y electricidad, logrando reducir riesgos, disminuir costos y desarrollar ventajas competitivas.">
+                        Mantenemos acuerdos con empresas especializadas en ingeniería, gestión de proyectos, construcción, mantenimiento y electricidad, logrando reducir riesgos, disminuir costos y desarrollar ventajas competitivas.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Core Values -->
+            <div class="bg-aldea-dark rounded-3xl p-8 sm:p-12 text-white">
+                <h4 class="text-2xl font-bold mb-8 text-center" data-en="Our Core Corporate Values" data-es="Nuestros Valores Corporativos">Nuestros Valores Corporativos</h4>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-slate-800/60 p-6 rounded-2xl border border-slate-700">
+                        <div class="text-amber-400 text-lg font-bold mb-2"><i class="fa-solid fa-shield-halved mr-2"></i><span data-en="Technical Excellence" data-es="Excelencia Técnica">Excelencia Técnica</span></div>
+                        <p class="text-xs text-slate-300" data-en="Precision engineering rooted in strict international standards (API, ASME, ANSI, AWS)." data-es="Ingeniería de precisión basada en estrictos estándares internacionales (API, ASME, ANSI, AWS).">Ingeniería de precisión basada en estrictos estándares internacionales (API, ASME, ANSI, AWS).</p>
+                    </div>
+                    <div class="bg-slate-800/60 p-6 rounded-2xl border border-slate-700">
+                        <div class="text-amber-400 text-lg font-bold mb-2"><i class="fa-solid fa-scale-balanced mr-2"></i><span data-en="Ethics & Compliance" data-es="Ética y Cumplimiento">Ética y Cumplimiento</span></div>
+                        <p class="text-xs text-slate-300" data-en="Absolute transparency and adherence to international legal and regulatory frameworks." data-es="Transparencia absoluta y apego a los marcos regulatorios y legales internacionales.">Transparencia absoluta y apego a los marcos regulatorios y legales internacionales.</p>
+                    </div>
+                    <div class="bg-slate-800/60 p-6 rounded-2xl border border-slate-700">
+                        <div class="text-amber-400 text-lg font-bold mb-2"><i class="fa-solid fa-chart-line mr-2"></i><span data-en="ROI & Efficiency" data-es="ROI y Eficiencia">ROI y Eficiencia</span></div>
+                        <p class="text-xs text-slate-300" data-en="Optimizing OPEX and CAPEX through cutting-edge technology and Zero Flaring solutions." data-es="Optimización de OPEX y CAPEX mediante tecnología de vanguardia y soluciones Zero Flaring.">Optimización de OPEX y CAPEX mediante tecnología de vanguardia y soluciones Zero Flaring.</p>
+                    </div>
+                    <div class="bg-slate-800/60 p-6 rounded-2xl border border-slate-700">
+                        <div class="text-amber-400 text-lg font-bold mb-2"><i class="fa-solid fa-hard-hat mr-2"></i><span data-en="Safety First (HSE)" data-es="Seguridad Primero (HSE)">Seguridad Primero (HSE)</span></div>
+                        <p class="text-xs text-slate-300" data-en="Proactive safety culture with Stop Work Authority empowering every team member." data-es="Cultura de seguridad proactiva con Autoridad de Detención de Trabajo para cada miembro.">Cultura de seguridad proactiva con Autoridad de Detención de Trabajo para cada miembro.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="construction" class="py-24 bg-aldea-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+                <div>
+                    <h2 class="text-xs uppercase tracking-widest text-amber-600 font-bold mb-3" data-en="Division 01" data-es="División 01">División 01</h2>
+                    <h3 class="text-3xl sm:text-4xl font-extrabold text-aldea-dark" data-en="Construction & Civil Infrastructure" data-es="Construcción e Infraestructura Civil">Construcción e Infraestructura Civil</h3>
+                </div>
+                <p class="text-slate-600 max-w-xl mt-4 md:mt-0" data-en="Delivering monumental civil infrastructure, mass transit systems, urban renewal, and high-end residential developments across the United States, Colombia, Panama, and Venezuela." data-es="Ejecutando infraestructura civil monumental, sistemas de transporte masivo, renovación urbana y desarrollos residenciales de alta gama en EE.UU., Colombia, Panamá y Venezuela.">
+                    Ejecutando infraestructura civil monumental, sistemas de transporte masivo, renovación urbana y desarrollos residenciales de alta gama en EE.UU., Colombia, Panamá y Venezuela.
+                </p>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- USA Residential & Civil -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-sm border border-slate-200 flex flex-col group hover:shadow-xl transition">
+                    <div class="h-56 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Modern Luxury Housing Florida" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/600x400/1C2541/FFFFFF?text=Modern+Florida+Housing'">
+                        <span class="absolute top-4 right-4 bg-aldea-dark/80 backdrop-blur-md text-amber-400 text-xs font-bold px-3 py-1 rounded-full" data-en="United States" data-es="Estados Unidos">Estados Unidos</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h4 class="text-xl font-bold text-aldea-dark mb-2" data-en="Residential & Civil Works, Florida" data-es="Obras Residenciales y Civiles, Florida">Obras Residenciales y Civiles, Florida</h4>
+                            <p class="text-slate-600 text-sm mb-4" data-en="Modern luxury housing, townhouses in Miami, single-family homes in Marathon FL, Biscayne Point high-end residences, and industrial paving/drainage in Fort Lauderdale." data-es="Viviendas modernas de lujo, townhouses en Miami, viviendas unifamiliares en Marathon FL, residencias de alta gama en Biscayne Point y pavimentación industrial en Fort Lauderdale.">
+                                Viviendas modernas de lujo, townhouses en Miami, viviendas unifamiliares en Marathon FL, residencias de alta gama en Biscayne Point y pavimentación industrial en Fort Lauderdale.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 font-medium">
+                            <span><i class="fa-solid fa-location-dot text-amber-500 mr-1"></i> Miami & Marathon, FL</span>
+                            <span class="text-amber-600 font-semibold" data-en="Active Portfolio" data-es="Portafolio Activo">Portafolio Activo</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Panama Metro & Social Housing -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-sm border border-slate-200 flex flex-col group hover:shadow-xl transition">
+                    <div class="h-56 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80" alt="Mass Transit & Social Class Urban Buildings" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/600x400/1C2541/FFFFFF?text=Urban+Social+Housing+Buildings'">
+                        <span class="absolute top-4 right-4 bg-aldea-dark/80 backdrop-blur-md text-amber-400 text-xs font-bold px-3 py-1 rounded-full" data-en="Panama" data-es="Panamá">Panamá</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h4 class="text-xl font-bold text-aldea-dark mb-2" data-en="Mass Transit & Urban Renovation" data-es="Tránsito Masivo y Renovación Urbana">Tránsito Masivo y Renovación Urbana</h4>
+                            <p class="text-slate-600 text-sm mb-4" data-en="Structural works for the Panama Metro Line 1 (2012) and the construction of 40 multi-family social housing buildings in Altos de Los Lagos, Colón (2016)." data-es="Obras estructurales para la Línea 1 del Metro de Panamá (2012) y construcción de 40 edificios de vivienda social en Altos de Los Lagos, Colón (2016).">
+                                Obras estructurales para la Línea 1 del Metro de Panamá (2012) y construcción de 40 edificios de vivienda social en Altos de Los Lagos, Colón (2016).
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 font-medium">
+                            <span><i class="fa-solid fa-location-dot text-amber-500 mr-1"></i> Panama City & Colón</span>
+                            <span class="text-amber-600 font-semibold" data-en="Completed 2016" data-es="Completado 2016">Completado 2016</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Colombia Light Rail / PPP (Gráfico SVG embebido de tren ligero real garantizado) -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-sm border border-slate-200 flex flex-col group hover:shadow-xl transition">
+                    <div class="h-56 relative overflow-hidden bg-slate-900 flex items-center justify-center">
+                        <svg class="w-full h-full object-cover group-hover:scale-105 transition duration-500" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Fondo urbano / cielo -->
+                            <defs>
+                                <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" stop-color="#1e293b"/>
+                                    <stop offset="100%" stop-color="#334155"/>
+                                </linearGradient>
+                                <linearGradient id="trainGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#f59e0b"/>
+                                    <stop offset="50%" stop-color="#fbbf24"/>
+                                    <stop offset="100%" stop-color="#d97706"/>
+                                </linearGradient>
+                            </defs>
+                            <rect width="800" height="500" fill="url(#skyGrad)"/>
+                            <!-- Edificios de fondo -->
+                            <rect x="50" y="150" width="100" height="200" fill="#0f172a" opacity="0.6"/>
+                            <rect x="180" y="100" width="120" height="250" fill="#0f172a" opacity="0.8"/>
+                            <rect x="330" y="180" width="90" height="170" fill="#0f172a" opacity="0.5"/>
+                            <rect x="500" y="80" width="140" height="270" fill="#0f172a" opacity="0.7"/>
+                            <rect x="670" y="130" width="90" height="220" fill="#0f172a" opacity="0.6"/>
+                            
+                            <!-- Vías del tren ligero -->
+                            <rect x="0" y="380" width="800" height="20" fill="#475569"/>
+                            <line x1="0" y1="385" x2="800" y2="385" stroke="#cbd5e1" stroke-width="4"/>
+                            <line x1="0" y1="395" x2="800" y2="395" stroke="#cbd5e1" stroke-width="4"/>
+                            <path d="M0 400 L800 400" stroke="#0f172a" stroke-width="6"/>
+
+                            <!-- Tren Ligero Moderno (Tranvía) -->
+                            <g transform="translate(120, 240)">
+                                <!-- Cuerpo principal del tren ligero -->
+                                <rect x="0" y="20" width="560" height="110" rx="25" fill="url(#trainGrad)" stroke="#b45309" stroke-width="4"/>
+                                <!-- Franja decorativa oscura / ventanas continuas -->
+                                <rect x="30" y="35" width="500" height="50" rx="10" fill="#0f172a"/>
+                                <!-- Ventanas individuales divisorias -->
+                                <rect x="50" y="42" width="75" height="35" rx="4" fill="#94a3b8" opacity="0.9"/>
+                                <rect x="135" y="42" width="75" height="35" rx="4" fill="#94a3b8" opacity="0.9"/>
+                                <rect x="220" y="42" width="75" height="35" rx="4" fill="#94a3b8" opacity="0.9"/>
+                                <rect x="305" y="42" width="75" height="35" rx="4" fill="#94a3b8" opacity="0.9"/>
+                                <rect x="390" y="42" width="75" height="35" rx="4" fill="#94a3b8" opacity="0.9"/>
+                                <rect x="475" y="42" width="35" height="35" rx="4" fill="#94a3b8" opacity="0.9"/>
+                                <!-- Cabina de luz frontal y faro -->
+                                <circle cx="535" cy="85" r="12" fill="#ef4444"/>
+                                <circle cx="535" cy="55" r="8" fill="#fef08a"/>
+                                <!-- Puertas de acceso -->
+                                <line x1="212" y1="35" x2="212" y2="120" stroke="#78350f" stroke-width="3"/>
+                                <line x1="385" y1="35" x2="385" y2="120" stroke="#78350f" stroke-width="3"/>
+                                <!-- Conexión de pantógrafo superior -->
+                                <path d="M 200 20 L 230 -10 L 330 -10 L 360 20" stroke="#cbd5e1" stroke-width="6" fill="none"/>
+                                <!-- Ruedas / Bogies -->
+                                <circle cx="100" cy="135" r="22" fill="#334155" stroke="#1e293b" stroke-width="6"/>
+                                <circle cx="280" cy="135" r="22" fill="#334155" stroke="#1e293b" stroke-width="6"/>
+                                <circle cx="460" cy="135" r="22" fill="#334155" stroke="#1e293b" stroke-width="6"/>
+                            </g>
+                        </svg>
+                        <span class="absolute top-4 right-4 bg-aldea-dark/80 backdrop-blur-md text-amber-400 text-xs font-bold px-3 py-1 rounded-full" data-en="Colombia" data-es="Colombia">Colombia</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h4 class="text-xl font-bold text-aldea-dark mb-2" data-en="Public-Private Partnership (PPP)" data-es="Asociación Público-Privada (APP)">Asociación Público-Privada (APP)</h4>
+                            <p class="text-slate-600 text-sm mb-4" data-en="Key participation in the Public-Private Association project for the Metro Ligero Avenida 68 in Bogotá, Colombia, featuring advanced on-road rail and urban transit integration." data-es="Participación clave en el proyecto de Asociación Público-Privada para el Metro Ligero Avenida 68 en Bogotá, Colombia, integrando rieles ferroviarios urbanos avanzados y transporte público.">
+                                Participación clave en el proyecto de Asociación Público-Privada para el Metro Ligero Avenida 68 en Bogotá, Colombia, integrando rieles ferroviarios urbanos avanzados y transporte público.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 font-medium">
+                            <span><i class="fa-solid fa-location-dot text-amber-500 mr-1"></i> Bogotá, Colombia</span>
+                            <span class="text-amber-600 font-semibold" data-en="Strategic PPP" data-es="APP Estratégica">APP Estratégica</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Venezuela Heavy Civil -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-sm border border-slate-200 flex flex-col group hover:shadow-xl transition md:col-span-2 lg:col-span-3">
+                    <div class="grid grid-cols-1 lg:grid-cols-3">
+                        <div class="h-64 lg:h-auto relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80" alt="Caracas Heavy Civil" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <span class="absolute top-4 right-4 bg-aldea-dark/80 backdrop-blur-md text-amber-400 text-xs font-bold px-3 py-1 rounded-full" data-en="Venezuela" data-es="Venezuela">Venezuela</span>
+                        </div>
+                        <div class="p-8 lg:col-span-2 flex flex-col justify-between">
+                            <div>
+                                <h4 class="text-2xl font-bold text-aldea-dark mb-4" data-en="Major Heavy Civil & Mass Transit in Venezuela" data-es="Obras Civiles Mayores y Transporte Masivo en Venezuela">Obras Civiles Mayores y Transporte Masivo en Venezuela</h4>
+                                <p class="text-slate-600 mb-6 leading-relaxed text-sm" data-en="Extensive track record in complex national infrastructure, including the construction of Bello Monte Station (Line 5, Caracas Metro), 15 residential buildings in Santa Cruz (Guatire), Guatire Station for the Caracas-Guatire-Guarenas mass transportation system, Canaima Computer Factory, and Mariche MetroCable." data-es="Extensa trayectoria en infraestructura compleja, incluyendo la Estación Bello Monte (Línea 5 del Metro de Caracas), 15 edificios residenciales en Santa Cruz (Guatire), Estación Guatire del sistema Caracas-Guatire-Guarenas, Fábrica de Computadoras Canaima y el MetroCable de Mariche.">
+                                    Extensa trayectoria en infraestructura compleja, incluyendo la Estación Bello Monte (Línea 5 del Metro de Caracas), 15 edificios residenciales en Santa Cruz (Guatire), Estación Guatire del sistema Caracas-Guatire-Guarenas, Fábrica de Computadoras Canaima y el MetroCable de Mariche.
+                                </p>
+                            </div>
+                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-slate-100 text-xs text-slate-700 font-semibold">
+                                <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 text-center"><i class="fa-solid fa-train text-amber-600 block mb-1"></i> Metro Caracas Línea 5</div>
+                                <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 text-center"><i class="fa-solid fa-city text-amber-600 block mb-1"></i> Viviendas Guatire (15 Edif.)</div>
+                                <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 text-center"><i class="fa-solid fa-industry text-amber-600 block mb-1"></i> Fábrica Canaima</div>
+                                <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 text-center"><i class="fa-solid fa-cable-car text-amber-600 block mb-1"></i> MetroCable Mariche</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="oilgas" class="py-24 oil-bg text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="bg-amber-500/20 text-amber-400 border border-amber-400/40 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest inline-block mb-4" data-en="Division 02" data-es="División 02">División 02</span>
+                <h2 class="text-3xl sm:text-5xl font-extrabold mb-6" data-en="Oil & Gas / Energy Solutions" data-es="Soluciones de Petróleo y Gas / Energía">Soluciones de Petróleo y Gas / Energía</h2>
+                <p class="text-slate-300 text-lg" data-en="Aldea Servicios Integrales, C.A. provides specialized EPC (Engineering, Procurement, and Construction) and surface facility solutions designed for critical, high-risk energy environments." data-es="Aldea Servicios Integrales, C.A. provee soluciones especializadas de procura, ingeniería y construcción (EPC) y facilidades de superficie para entornos energéticos críticos y de alto riesgo.">
+                    Aldea Servicios Integrales, C.A. provee soluciones especializadas de procura, ingeniería y construcción (EPC) y facilidades de superficie para entornos energéticos críticos y de alto riesgo.
+                </p>
+            </div>
+
+            <!-- 6 Pillars -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                <!-- Pillar 1 -->
+                <div class="bg-slate-900/80 p-8 rounded-3xl border border-slate-800 backdrop-blur-md">
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl mb-6">
+                        <i class="fa-solid fa-oil-well"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-white" data-en="1. Location Engineering & Pad Sites" data-es="1. Ingeniería de Locaciones y Macollas">1. Ingeniería de Locaciones y Macollas</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed" data-en="Design and construction of drill pads, earthmoving, high-resistance foundations for rigs, heavy access roads, industrial drainage, and crude treatment." data-es="Diseño y construcción de macollas, movimiento de tierras, fundaciones de alta resistencia para equipos de perforación, vías de acceso y drenaje industrial.">
+                        Diseño y construcción de macollas, movimiento de tierras, fundaciones de alta resistencia para equipos de perforación, vías de acceso y drenaje industrial.
+                    </p>
+                </div>
+
+                <!-- Pillar 2 -->
+                <div class="bg-slate-900/80 p-8 rounded-3xl border border-slate-800 backdrop-blur-md">
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl mb-6">
+                        <i class="fa-solid fa-gears"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-white" data-en="2. Mechanical Assembly & Process Infra" data-es="2. Montaje Mecánico e Infraestructura">2. Montaje Mecánico e Infraestructura</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed" data-en="Surface facilities installation, 2-phase/3-phase separators, static/dynamic equipment positioning, tank farms, flowlines, and gas pipelines." data-es="Instalación de facilidades de superficie, separadores bi/trifásicos, posicionamiento de equipos estáticos y dinámicos, tanques y líneas de flujo.">
+                        Instalación de facilidades de superficie, separadores bi/trifásicos, posicionamiento de equipos estáticos y dinámicos, tanques y líneas de flujo.
+                    </p>
+                </div>
+
+                <!-- Pillar 3 -->
+                <div class="bg-slate-900/80 p-8 rounded-3xl border border-slate-800 backdrop-blur-md">
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl mb-6">
+                        <i class="fa-solid fa-fire-flame-curved"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-white" data-en="3. Wellhead Gas Valorization" data-es="3. Valorización de Gas en Pozo">3. Valorización de Gas en Pozo</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed" data-en="Associated gas utilization systems converting residual well gas into electric power (Zero Flaring), portable sweetening/dehydration units." data-es="Sistemas de aprovechamiento de gas asociado convirtiendo gas residual en energía eléctrica (Zero Flaring) y unidades de deshidratación.">
+                        Sistemas de aprovechamiento de gas asociado convirtiendo gas residual en energía eléctrica (Zero Flaring) y unidades de deshidratación.
+                    </p>
+                </div>
+
+                <!-- Pillar 4 -->
+                <div class="bg-slate-900/80 p-8 rounded-3xl border border-slate-800 backdrop-blur-md">
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl mb-6">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-white" data-en="4. Power Generation Capacity" data-es="4. Capacidad de Generación de Energía">4. Capacidad de Generación de Energía</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed" data-en="Rugged field power generation running on natural gas, biogas, synthesis gas, and associated well gas in cogeneration/trigeneration setups." data-es="Generación de energía en campo operando con gas natural, biogás, gas de síntesis y gas asociado de pozo en cogeneración.">
+                        Generación de energía en campo operando con gas natural, biogás, gas de síntesis y gas asociado de pozo en cogeneración.
+                    </p>
+                </div>
+
+                <!-- Pillar 5 -->
+                <div class="bg-slate-900/80 p-8 rounded-3xl border border-slate-800 backdrop-blur-md">
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl mb-6">
+                        <i class="fa-solid fa-chart-pie"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-white" data-en="5. OPEX Optimization & Zero Flaring" data-es="5. Optimización de OPEX y Zero Flaring">5. Optimización de OPEX y Zero Flaring</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed" data-en="Replacing costly external diesel with on-site associated gas, generating monthly savings up to $230,000 USD per 1 MW." data-es="Sustitución de costoso diésel por gas asociado en sitio, generando ahorros mensuales de hasta $230,000 USD por 1 MW.">
+                        Sustitución de costoso diésel por gas asociado en sitio, generando ahorros mensuales de hasta $230,000 USD por 1 MW.
+                    </p>
+                </div>
+
+                <!-- Pillar 6 -->
+                <div class="bg-slate-900/80 p-8 rounded-3xl border border-slate-800 backdrop-blur-md">
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl mb-6">
+                        <i class="fa-solid fa-seedling"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-white" data-en="6. Asset Integrity & Remediation" data-es="6. Integridad de Activos y Remediación">6. Integridad de Activos y Remediación</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed" data-en="Station maintenance, well plugging & abandonment (P&A), wastewater treatment, soil bioremediation, and environmental restoration." data-es="Mantenimiento de estaciones, abandono de pozos (P&A), tratamiento de aguas, biorremediación de suelos y restauración ambiental.">
+                        Mantenimiento de estaciones, abandono de pozos (P&A), tratamiento de aguas, biorremediación de suelos y restauración ambiental.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Economics Table -->
+            <div class="bg-slate-900 border border-slate-800 rounded-3xl p-8 sm:p-12">
+                <div class="flex flex-col md:flex-row md:items-center justify-between mb-8">
+                    <div>
+                        <h3 class="text-2xl font-bold text-white mb-2" data-en="Associated Gas Value Analysis (OPEX Savings)" data-es="Análisis de Valor del Gas Asociado (Ahorro de OPEX)">Análisis de Valor del Gas Asociado (Ahorro de OPEX)</h3>
+                        <p class="text-slate-400 text-sm" data-en="Comparing traditional diesel generation vs. Aldea On-Site Gas Power Generation." data-es="Comparación entre generación diésel convencional y generación de gas en sitio Aldea.">Comparación entre generación diésel convencional y generación de gas en sitio Aldea.</p>
+                    </div>
+                    <span class="mt-4 md:mt-0 bg-amber-500/20 text-amber-400 px-4 py-2 rounded-xl text-sm font-semibold border border-amber-500/30" data-en="Estimated Savings: Up to $230,000 USD / Month*" data-es="Ahorro Estimado: Hasta $230,000 USD / Mes*">
+                        Ahorro Estimado: Hasta $230,000 USD / Mes*
+                    </span>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse text-sm">
+                        <thead>
+                            <tr class="border-b border-slate-800 text-amber-400 uppercase tracking-wider text-xs">
+                                <th class="py-4 px-4" data-en="Comparison Parameter" data-es="Parámetro de Comparación">Parámetro de Comparación</th>
+                                <th class="py-4 px-4" data-en="Conventional (Diesel)" data-es="Convencional (Diésel)">Convencional (Diésel)</th>
+                                <th class="py-4 px-4 font-bold text-amber-300" data-en="Aldea Energy Solution (Gas)" data-es="Solución Energética Aldea (Gas)">Solución Energética Aldea (Gas)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-800 text-slate-300">
+                            <tr>
+                                <td class="py-4 px-4 font-semibold text-white" data-en="Fuel Source" data-es="Fuente de Combustible">Fuente de Combustible</td>
+                                <td class="py-4 px-4" data-en="External supply / Complex logistics" data-es="Suministro externo / Logística compleja">Suministro externo / Logística compleja</td>
+                                <td class="py-4 px-4 text-amber-300 font-medium" data-en="Associated Well Gas (On-site)" data-es="Gas Asociado de Pozo (En sitio)">Gas Asociado de Pozo (En sitio)</td>
+                            </tr>
+                            <tr>
+                                <td class="py-4 px-4 font-semibold text-white" data-en="Consumption for 1 MW" data-es="Consumo para 1 MW">Consumo para 1 MW</td>
+                                <td class="py-4 px-4">~63 Galones / hora</td>
+                                <td class="py-4 px-4 text-amber-300 font-medium">~300 MSCFD</td>
+                            </tr>
+                            <tr>
+                                <td class="py-4 px-4 font-semibold text-white" data-en="Fuel Cost" data-es="Costo de Combustible">Costo de Combustible</td>
+                                <td class="py-4 px-4" data-en="Variable (Subject to market & freight)" data-es="Variable (Sujeto a mercado y flete)">Variable (Sujeto a mercado y flete)</td>
+                                <td class="py-4 px-4 text-amber-300 font-medium" data-en="Zero Cost (Own Resource)" data-es="Costo Cero (Recurso propio)">Costo Cero (Recurso propio)</td>
+                            </tr>
+                            <tr>
+                                <td class="py-4 px-4 font-semibold text-white" data-en="Carbon Footprint" data-es="Huella de Carbono">Huella de Carbono</td>
+                                <td class="py-4 px-4" data-en="High particulate emissions" data-es="Alta emisión de particulados">Alta emisión de particulados</td>
+                                <td class="py-4 px-4 text-amber-300 font-medium" data-en="Critical Emission Reduction" data-es="Reducción Crítica de Emisiones">Reducción Crítica de Emisiones</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="offices" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs uppercase tracking-widest text-amber-600 font-bold mb-3 block" data-en="Presence Across the Americas" data-es="Presencia en las Américas">Presencia en las Américas</span>
+                <h3 class="text-3xl sm:text-4xl font-extrabold text-aldea-dark" data-en="Our Global Offices" data-es="Nuestras Oficinas Globales">Nuestras Oficinas Globales</h3>
+                <p class="text-slate-600 mt-4 text-lg" data-en="Strategically positioned in key economic hubs to serve international clients with seamless responsiveness through www.aldeacorp.com." data-es="Posicionados estratégicamente en centros económicos clave para atender a clientes internacionales a través de www.aldeacorp.com.">
+                    Posicionados estratégicamente en centros económicos clave para atender a clientes internacionales a través de www.aldeacorp.com.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- USA Office -->
+                <div class="bg-aldea-light p-8 rounded-3xl border border-slate-200 shadow-sm">
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-600 flex items-center justify-center text-xl mb-6">
+                        <i class="fa-solid fa-building-columns"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-aldea-dark mb-3">Aldea Group LLC — USA</h4>
+                    <p class="text-slate-600 text-sm mb-4 leading-relaxed">
+                        701 Brickell Ave., Suite 850<br>
+                        Miami, FL 33131, USA
+                    </p>
+                    <div class="space-y-2 text-xs font-medium text-slate-700 pt-4 border-t border-slate-200">
+                        <div><i class="fa-solid fa-phone text-amber-600 mr-2"></i> +1 786 286 6906 / +34 654 835 083</div>
+                        <div><i class="fa-solid fa-envelope text-amber-600 mr-2"></i> negocios@aldeacorp.com</div>
+                    </div>
+                </div>
+
+                <!-- Colombia Office -->
+                <div class="bg-aldea-light p-8 rounded-3xl border border-slate-200 shadow-sm">
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-600 flex items-center justify-center text-xl mb-6">
+                        <i class="fa-solid fa-map-location-dot"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-aldea-dark mb-3">Aldea VC — Colombia</h4>
+                    <p class="text-slate-600 text-sm mb-4 leading-relaxed">
+                        123 St. N9 and C40<br>
+                        Bogotá, Colombia
+                    </p>
+                    <div class="space-y-2 text-xs font-medium text-slate-700 pt-4 border-t border-slate-200">
+                        <div><i class="fa-solid fa-phone text-amber-600 mr-2"></i> +57 (317) 807 8488</div>
+                        <div><i class="fa-solid fa-envelope text-amber-600 mr-2"></i> negocios@aldeacorp.com</div>
+                    </div>
+                </div>
+
+                <!-- Venezuela Office -->
+                <div class="bg-aldea-light p-8 rounded-3xl border border-slate-200 shadow-sm">
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-600 flex items-center justify-center text-xl mb-6">
+                        <i class="fa-solid fa-industry"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-aldea-dark mb-3">Aldea Servicios Integrales — Venezuela</h4>
+                    <p class="text-slate-600 text-sm mb-4 leading-relaxed">
+                        Av. Francisco de Miranda, Edf. Parque Cristal, Torre Este, Piso 10, Los Palos Grandes, Caracas
+                    </p>
+                    <div class="space-y-2 text-xs font-medium text-slate-700 pt-4 border-t border-slate-200">
+                        <div><i class="fa-solid fa-phone text-amber-600 mr-2"></i> +58 414 1625703 / +58 414 1783982</div>
+                        <div><i class="fa-solid fa-envelope text-amber-600 mr-2"></i> negocios@aldeacorp.com</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 bg-aldea-dark text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-3xl">
+            <span class="text-amber-400 text-xs font-bold uppercase tracking-widest mb-3 block" data-en="Direct Corporate Contact" data-es="Contacto Corporativo Directo">Contacto Corporativo Directo</span>
+            <h2 class="text-3xl sm:text-5xl font-extrabold mb-6" data-en="Connect With Our Engineering Team" data-es="Conéctese con Nuestro Equipo de Ingeniería">Conéctese con Nuestro Equipo de Ingeniería</h2>
+            <p class="text-slate-300 text-lg mb-8 leading-relaxed" data-en="For project inquiries, technical proposals, and partnership opportunities, please reach out directly through our official corporate channel at www.aldeacorp.com." data-es="Para consultas de proyectos, propuestas técnicas y oportunidades de asociación, comuníquese directamente a través de nuestro canal corporativo oficial en www.aldeacorp.com.">
+                Para consultas de proyectos, propuestas técnicas y oportunidades de asociación, comuníquese directamente a través de nuestro canal corporativo oficial en www.aldeacorp.com.
+            </p>
+            <div class="inline-block bg-slate-900 border border-slate-800 p-8 rounded-3xl shadow-xl">
+                <div class="text-slate-400 text-sm mb-2" data-en="Official Corporate Email" data-es="Correo Electrónico Corporativo Oficial">Correo Electrónico Corporativo Oficial</div>
+                <a href="mailto:negocios@aldeacorp.com" class="text-2xl sm:text-3xl font-extrabold text-amber-400 hover:underline">negocios@aldeacorp.com</a>
+                <div class="mt-6 text-xs text-slate-400">
+                    www.aldeacorp.com &bull; United States &bull; Colombia &bull; Panama &bull; Venezuela
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-slate-500 py-12 border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between text-sm">
+            <div class="flex items-center space-x-3 mb-6 md:mb-0">
+                <div class="w-8 h-8 rounded-full bg-amber-400 flex items-center justify-center font-black text-aldea-dark text-xs">A</div>
+                <span class="text-white font-bold tracking-wider">ALDEA GROUP LLC — www.aldeacorp.com</span>
+            </div>
+            <div>
+                &copy; 2026 www.aldeacorp.com. Todos los Derechos Reservados. Ingeniería Profesional y Soluciones Energéticas.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let currentLang = 'es';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'es' : 'en';
+            document.querySelectorAll('[data-en]').forEach(el => {
+                const text = el.getAttribute(`data-${currentLang}`);
+                if (text) {
+                    el.textContent = text;
+                }
+            });
+            document.getElementById('lang-label').textContent = currentLang.toUpperCase() + ' / ' + (currentLang === 'en' ? 'ES' : 'EN');
+        }
+
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
